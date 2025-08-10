@@ -43,10 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // --- MODULE 3: GLOBAL - MULTILINGUAL TRANSLATION ---
-    const translations = {
-        // translations.js dosyasındaki verilerinizi buraya kopyalayın
-        // veya HTML'deki translations.js scriptini koruyun
-    };
+    // translations.js dosyasındaki verileriniz ayrı bir dosya olarak kaldığı için bu modül burada değişmedi
     const langSwitcher = document.querySelector('.lang-switcher');
     const langLinks = document.querySelectorAll('.lang-link');
     
@@ -93,8 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- MODULE 4: MAPS PAGE - LEAFLET MAP INITIALIZATION ---
     const mapContainer = document.getElementById('mapid');
     if (mapContainer) {
-        // Leaflet'in ikon dosyalarının yolunu manuel olarak belirliyoruz
-        L.Icon.Default.imagePath = 'lib/leaflet/images/';
+        // CDN kullandığımız için bu satıra gerek kalmadı
+        // L.Icon.Default.imagePath = 'lib/leaflet/images/';
 
         const mymap = L.map('mapid').setView([39.0742, 21.8243], 7);
 
