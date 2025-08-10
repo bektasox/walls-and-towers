@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // --- MODULE 3: GLOBAL - MULTILINGUAL TRANSLATION ---
-    // translations.js dosyasındaki verileriniz ayrı bir dosya olarak kaldığı için bu modül burada değişmedi
     const langSwitcher = document.querySelector('.lang-switcher');
     const langLinks = document.querySelectorAll('.lang-link');
     
@@ -90,8 +89,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- MODULE 4: MAPS PAGE - LEAFLET MAP INITIALIZATION ---
     const mapContainer = document.getElementById('mapid');
     if (mapContainer) {
-        // CDN kullandığımız için bu satıra gerek kalmadı
-        // L.Icon.Default.imagePath = 'lib/leaflet/images/';
+        // Makaledeki gibi ikon yolunu sıfırlıyoruz. Bu, ikonların doğru şekilde görünmesini sağlar.
+        delete L.Icon.Default.prototype._getIconUrl;
+
+        L.Icon.Default.mergeOptions({
+            iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+            iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+            shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png'
+        });
 
         const mymap = L.map('mapid').setView([39.0742, 21.8243], 7);
 
